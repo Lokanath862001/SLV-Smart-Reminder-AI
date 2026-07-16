@@ -1,30 +1,23 @@
-import 'package:vibration/vibration.dart';
+import 'package:flutter/services.dart';
 
 class VibrationService {
+  static const _channel = MethodChannel('com.slv.reminder/vibration');
+
   static Future<void> vibrateAlarm() async {
-    final hasVibrator = await Vibration.hasVibrator();
-    if (hasVibrator == true) {
-      final hasCustom = await Vibration.hasCustomVibrationsSupport();
-      if (hasCustom == true) {
-        // Vibrate with pattern: wait 500ms, vibrate 1000ms, wait 500ms, vibrate 1000ms...
-        Vibration.vibrate(
-          pattern: [500, 1000, 500, 1000, 500, 1000],
-          repeat: 0, // repeat from start
-        );
-      } else {
-        Vibration.vibrate(duration: 2000);
-      }
-    }
+    try {
+      await _channel.invokeMethod('vibrateAlarm');
+    } catch (_) {}
   }
 
   static Future<void> vibrateQuick() async {
-    final hasVibrator = await Vibration.hasVibrator();
-    if (hasVibrator == true) {
-      Vibration.vibrate(duration: 100);
-    }
+    try {
+      await _channel.invokeMethod('vibrateQuick');
+    } catch (_) {}
   }
 
   static Future<void> cancel() async {
-    Vibration.cancel();
+    try {
+      await _channel.invokeMethod('cancel');
+    } catch (_) {}
   }
 }
