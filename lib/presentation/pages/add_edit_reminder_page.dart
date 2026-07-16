@@ -417,7 +417,7 @@ class _AddEditReminderPageState extends ConsumerState<AddEditReminderPage> {
                       decoration: BoxDecoration(
                         color: Color(colorVal),
                         shape: BoxShape.circle,
-                        border: isSelected ? BorderSide(color: isDark ? Colors.white : Colors.black, width: 3) : null,
+                        border: isSelected ? Border.all(color: isDark ? Colors.white : Colors.black, width: 3) : null,
                       ),
                     ),
                   );

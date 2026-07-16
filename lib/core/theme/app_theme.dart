@@ -57,7 +57,7 @@ class AppThemes {
       colorScheme: colorScheme,
       textTheme: textTheme,
       scaffoldBackgroundColor: colorScheme.background,
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: colorScheme.surface,
         elevation: isOled ? 0 : 2,
         shape: RoundedRectangleBorder(
